@@ -41,8 +41,12 @@ export class App extends Component {
 
   onSubmit = evt => {
     evt.preventDefault();
+    const newQuery = evt.target.elements.querry.value.trim();
+    if (!newQuery) {
+      return toast.error('Can not be empty');
+    }
     this.setState({
-      query: `${Date.now()}/${evt.target.elements.querry.value}`,
+      query: `${Date.now()}/${newQuery}`,
       images: [],
       page: 1,
     });
